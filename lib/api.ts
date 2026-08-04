@@ -2,7 +2,7 @@ import axios from "axios"
 import type { Note } from "../types/note";
 
 const API_KEY = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
-const API_URL = 'https://notehub-public.goit.study/api/docs';
+const API_URL = 'https://notehub-public.goit.study/api/notes';
 
 export interface NotesResponse {
   notes: Note[];
@@ -14,6 +14,15 @@ export interface NewNoteData {
   content: string;
   tag: string;
 }
+export const fetchNoteById = async (noteId: number): Promise<Note> => {
+  const response = await axios.get<Note>(`${API_URL}/${noteId}`, {
+    headers: {
+      Authorization: `Bearer ${API_KEY}`,
+    },
+  });
+
+  return response.data;
+};
 
 export const fetchNotes = async (search: string, page: number): Promise<NotesResponse> => {
   const params: Record<string, string | number> = { page };
