@@ -5,10 +5,11 @@ import NoteList from '@/components/NoteList/NoteList';
 import { fetchNotes } from '@/lib/api';
 import { useEffect, useState } from 'react';
 import Pagination from '@/components/Pagination/Pagination';
-import NoteModal from '@/components/NoteModal/NoteModal';
+import Modal from '@/components/Modal/Modal';
 import SearchBox from '@/components/SearchBox/SearchBox';
 import { useDebounce } from 'use-debounce';
 import { Note } from '@/types/note';
+
 
 type NotesClientProps = {
 	query: string;
@@ -67,7 +68,7 @@ function NotesClient({ query, page, initialData }: NotesClientProps) {
 				</button>
 			</header>
 			{isSuccess && data.notes.length > 0 && <NoteList notes={data.notes} />}
-			{isModalOpen && <NoteModal onClose={() => setIsOpenModal(false)} />}
+			{isModalOpen && <Modal onClose={() => setIsOpenModal(false)} />}
 		</div>
 	);
 }

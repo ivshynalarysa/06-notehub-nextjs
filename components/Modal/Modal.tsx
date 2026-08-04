@@ -1,13 +1,13 @@
 import { createPortal } from 'react-dom';
-import css from './NoteModal.module.css'
+import css from './Modal.module.css'
 import React, { useEffect } from 'react';
 import NoteForm from '../NoteForm/NoteForm';
 
-interface NoteModalProps {
+interface ModalProps {
     onClose: () => void;
 }
 
-export default function NoteModal({ onClose }: NoteModalProps) {
+export default function Modal({ onClose }: ModalProps) {
     useEffect(() => {
         const handleEscape = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
