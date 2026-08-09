@@ -13,7 +13,9 @@ interface PaginationProps {
 export default function Pagination({
   currentPage,
   onPageChange,
-  totalPages,
+    totalPages,
+    pageRangeDisplayed = 2,
+    marginPagesDisplayed = 1,
 }: PaginationProps) {
   if (totalPages <= 1) {
     return null;
@@ -32,8 +34,8 @@ export default function Pagination({
         breakLinkClassName={css.pageLink}
         activeClassName={css.active}
         pageCount={totalPages}
-        pageRangeDisplayed={2}
-        marginPagesDisplayed={1}
+        pageRangeDisplayed={pageRangeDisplayed}
+        marginPagesDisplayed={marginPagesDisplayed}
         forcePage={currentPage - 1}
         onPageChange={(selectedItem) => onPageChange(selectedItem.selected + 1)}
         previousLabel="<"

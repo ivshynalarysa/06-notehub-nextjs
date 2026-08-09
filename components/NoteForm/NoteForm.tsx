@@ -8,7 +8,7 @@ interface NoteFormProps {
   onClose: () => void;
 }
 
-const validationScheme = Yup.object({
+const validationSchema = Yup.object({
   title: Yup.string()
     .min(3, 'Title must be at least 3 characters')
     .max(50, 'Title must be at most 50 characters')
@@ -38,7 +38,7 @@ export default function NoteForm({ onClose }: NoteFormProps) {
   return (
     <Formik
       initialValues={initialValues}
-      validationScheme={validationScheme}
+      validationSchema={validationSchema}
       onSubmit={(values) => {
         createNoteMutation.mutate(values);
       }}
