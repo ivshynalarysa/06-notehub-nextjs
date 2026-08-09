@@ -18,16 +18,13 @@ import type { Note } from '@/types/note';
 type NotesClientProps = {
   query: string;
   page: number;
-  initialData: {
-    notes: Note[];
-    totalPages: number;
-  };
+  
 };
 
 function NotesClient({
   query,
   page,
-  initialData,
+ 
 }: NotesClientProps) {
   const [currentPage, setCurrentPage] = useState(page);
   const [isModalOpen, setIsOpenModal] = useState(false);
@@ -39,10 +36,7 @@ function NotesClient({
     queryKey: ['notes', debouncedText, currentPage],
     queryFn: () => fetchNotes(debouncedText, currentPage),
     placeholderData: keepPreviousData,
-    initialData:
-      debouncedText === query && currentPage === page
-        ? initialData
-        : undefined,
+   
     refetchOnMount: false,
   });
 
