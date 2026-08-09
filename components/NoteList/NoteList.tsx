@@ -12,7 +12,7 @@ export default function NoteList({ notes }: NoteListProps) {
   const queryClient = useQueryClient();
 
   const deleteNoteMutation = useMutation({
-    mutationFn: (noteId: number) => deleteNote(noteId),
+    mutationFn: (noteId: string) => deleteNote(noteId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
     },
@@ -33,7 +33,8 @@ export default function NoteList({ notes }: NoteListProps) {
             <span className={css.tag}>{note.tag}</span>
             <button
               className={css.button}
-              onClick={() => deleteNoteMutation.mutate(note.id)}
+                      onClick={() => deleteNoteMutation.mutate(note.id)}
+                      disabled={deleteNoteMutation.isPending}
             >
               Delete
             </button>

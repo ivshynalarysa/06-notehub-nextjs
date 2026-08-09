@@ -7,7 +7,7 @@ import css from './NoteDetails.module.css';
 
 export default function NoteDetailsClient() {
   const params = useParams();
-  const noteId = Number(params.id);
+    const { id } = useParams<{ id: string }>();
 
   const {
     data: note,
@@ -15,8 +15,8 @@ export default function NoteDetailsClient() {
     isError,
     error,
   } = useQuery({
-    queryKey: ['note', noteId],
-    queryFn: () => fetchNoteById(noteId),
+    queryKey: ['note', id],
+    queryFn: () => fetchNoteById(id),
     refetchOnMount: false,
   });
 
