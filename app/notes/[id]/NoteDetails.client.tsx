@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation';
 import css from './NoteDetails.module.css';
 
 export default function NoteDetailsClient() {
-  const params = useParams();
+  
     const { id } = useParams<{ id: string }>();
 
   const {
